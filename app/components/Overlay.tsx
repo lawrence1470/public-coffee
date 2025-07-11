@@ -2,7 +2,7 @@
 
 import { Logo } from "@pmndrs/branding";
 import { motion } from "framer-motion";
-import { AiOutlineShopping } from "react-icons/ai";
+import { AiOutlineShopping, AiOutlineArrowRight } from "react-icons/ai";
 import { useSnapshot } from "valtio";
 import { state } from "../store";
 
@@ -73,6 +73,15 @@ export function Overlay() {
                 mug showcase. <strong>Discover the perfect blend</strong> for
                 your taste.
               </p>
+              <button
+                className="button-primary"
+                onClick={() => {
+                  // Add your action here
+                  console.log("Button clicked!");
+                }}
+              >
+                EXPLORE COLLECTION <AiOutlineArrowRight size="1.3em" />
+              </button>
             </motion.div>
           </div>
         </div>
