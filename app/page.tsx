@@ -1,11 +1,23 @@
 import { CanvasComponent } from "./components/Canvas";
 import { Overlay } from "./components/Overlay";
+import { AboutSection } from "./components/sections/AboutSection";
+import { BenefitsSection } from "./components/sections/BenefitsSection";
+import { ScrollContainer } from "./components/ScrollContainer";
 
 export default function Home() {
   return (
-    <main className="main-container">
-      <CanvasComponent />
-      <Overlay />
-    </main>
+    <ScrollContainer>
+      {/* Hero Section with 3D Mug */}
+      <section className="hero-section">
+        <CanvasComponent />
+        <Overlay />
+      </section>
+
+      {/* About Section */}
+      <AboutSection />
+
+      {/* Benefits Section */}
+      <BenefitsSection />
+    </ScrollContainer>
   );
 }

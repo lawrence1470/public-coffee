@@ -5,6 +5,8 @@ import { useGLTF, useTexture, Decal } from "@react-three/drei";
 import { easing } from "maath";
 import { useSnapshot } from "valtio";
 import { state } from "../store";
+import { useRef } from "react";
+import * as THREE from "three";
 
 interface MugProps {
   scale?: number;
@@ -15,11 +17,13 @@ interface MugProps {
 export function Mug(props: MugProps) {
   const snap = useSnapshot(state);
   const texture = useTexture(`/${snap.decal}.png`);
+  const groupRef = useRef<THREE.Group>(null!);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { nodes, materials } = useGLTF("/mug.glb") as any;
 
-  // Set all materials to white
+  // Set all materials to white and add spin effect
   useFrame((_, delta) => {
+    // Material color animation
     if (materials && materials["01___Default"]) {
       easing.dampC(materials["01___Default"].color, "#ffffff", 0.25, delta);
     }
@@ -32,10 +36,21 @@ export function Mug(props: MugProps) {
     if (materials && materials["02___Default-2"]) {
       easing.dampC(materials["02___Default-2"].color, "#ffffff", 0.25, delta);
     }
+
+    // Cool spin effect - rotate around Y-axis
+    if (groupRef.current) {
+      groupRef.current.rotation.y += delta * 0.5; // Adjust speed as needed
+    }
   });
 
   return (
-    <group {...props} scale={0.1} position={[0, -0.5, 0]} dispose={null}>
+    <group
+      ref={groupRef}
+      {...props}
+      scale={0.1}
+      position={[0, -0.5, 0]}
+      dispose={null}
+    >
       {/* Main mug body */}
       <mesh
         castShadow

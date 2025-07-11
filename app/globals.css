@@ -7,7 +7,8 @@
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+  overflow: hidden;
+  height: 100vh;
 }
 
 body {
@@ -45,20 +46,18 @@ html {
 }
 
 html,
-body,
-#root,
-#main {
+body {
   width: 100%;
-  height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  user-select: none;
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--color-scene-bg);
   font-family: "Inter", sans-serif;
+  position: fixed;
+  width: 100%;
 }
 
 @keyframes fade-in {
@@ -70,7 +69,14 @@ body {
   }
 }
 
-.main-container {
+/* Scroll Container */
+.scroll-container {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.hero-section {
   width: 100vw;
   height: 100vh;
   height: 100dvh; /* Dynamic viewport height for mobile */
@@ -85,6 +91,115 @@ body {
   width: 100vw !important;
   height: 100vh !important;
   height: 100dvh !important; /* Dynamic viewport height for mobile */
+}
+
+/* About Section */
+.about-section {
+  min-height: 100vh;
+  padding: 80px 0;
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  position: relative;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.about-section h2 {
+  font-size: 4rem;
+  font-weight: 900;
+  font-family: "Nunito Sans", sans-serif;
+  margin-bottom: 3rem;
+  text-align: center;
+  letter-spacing: -2px;
+}
+
+.about-content {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-text p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.feature {
+  padding: 1.5rem;
+  background: var(--color-bg-primary);
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+}
+
+.feature h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.feature p {
+  font-size: 1rem;
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
+.scroll-to-top {
+  margin-top: 3rem;
+  padding: 1rem 2rem;
+  background: var(--color-button-primary);
+  color: var(--color-button-text);
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.scroll-to-top:hover {
+  background: var(--color-button-hover);
+  transform: translateY(-2px);
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  user-select: none;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-indicator:hover {
+  opacity: 0.8;
 }
 
 header {
@@ -331,11 +446,37 @@ button:hover {
 }
 
 @media screen and (max-width: 768px) {
-  html,
-  body {
+  .hero-section {
     height: 100vh;
     height: 100dvh; /* Dynamic viewport height for mobile */
-    overflow: hidden;
+  }
+
+  .about-section {
+    padding: 60px 0;
+  }
+
+  .about-container {
+    padding: 0 20px;
+  }
+
+  .about-section h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .about-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .feature {
+    padding: 1rem;
   }
 
   .section--container {
@@ -386,6 +527,14 @@ button:hover {
 }
 
 @media screen and (max-width: 480px) {
+  .about-section h2 {
+    font-size: 2.5rem;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+  }
+
   .section--container {
     margin-left: 5vw;
     margin-top: 15vh;
@@ -411,5 +560,249 @@ button:hover {
     padding: 10px 20px;
     font-size: 0.8rem;
     gap: 10px;
+  }
+}
+
+/* GSAP Scroll Container */
+.gsap-scroll-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  touch-action: none;
+  cursor: grab;
+}
+
+.gsap-scroll-container:active {
+  cursor: grabbing;
+}
+
+.gsap-scroll-wrapper {
+  width: 100%;
+  position: relative;
+  will-change: transform;
+  user-select: none;
+}
+
+.gsap-section {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Section Navigation Dots */
+.section-nav {
+  position: fixed;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.nav-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-dot:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.2);
+}
+
+.nav-dot.active {
+  background: #FF6B35;
+  border-color: #FF6B35;
+  transform: scale(1.3);
+}
+
+@media screen and (max-width: 768px) {
+  .section-nav {
+    right: 15px;
+    gap: 12px;
+  }
+
+  .nav-dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* BENEFITS SECTION */
+.benefits-section {
+  background: #ffffff;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.benefits-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.benefits-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.benefits-header h2 {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+  letter-spacing: -1px;
+}
+
+.benefits-header p {
+  font-size: 1.125rem;
+  color: #666;
+  font-weight: 400;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.benefit-card {
+  background: #f8f8f8;
+  border-radius: 12px;
+  padding: 25px 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid #e5e5e5;
+  cursor: pointer;
+  user-select: none;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.benefit-card:hover {
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-color: #FF6B35;
+}
+
+.benefit-icon {
+  color: #FF6B35;
+  margin-bottom: 20px;
+}
+
+.benefit-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.benefit-card p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.benefit-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-number {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #FF6B35;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+@media screen and (max-width: 1200px) {
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .benefits-container {
+    padding: 20px;
+  }
+
+  .benefits-header {
+    margin-bottom: 30px;
+  }
+
+  .benefits-header h2 {
+    font-size: 2rem;
+  }
+
+  .benefits-header p {
+    font-size: 1rem;
+  }
+
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .benefit-card {
+    padding: 20px 15px;
+    min-height: 240px;
+  }
+
+  .benefit-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .benefit-card p {
+    font-size: 0.85rem;
+  }
+
+  .stat-number {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+    padding-right: 10px;
+  }
+  
+  .benefit-card {
+    min-height: auto;
   }
 }
