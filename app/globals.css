@@ -355,9 +355,9 @@ button:hover {
   }
 
   .section--container h1 {
-    font-size: 4rem;
-    letter-spacing: -3px;
-    line-height: 3.5rem;
+    font-size: 8rem;
+    letter-spacing: -6px;
+    line-height: 6rem;
     width: 100%;
   }
 
@@ -403,9 +403,9 @@ button:hover {
   }
 
   .section--container h1 {
-    font-size: 3rem;
-    letter-spacing: -2px;
-    line-height: 2.8rem;
+    font-size: 6rem;
+    letter-spacing: -4px;
+    line-height: 5rem;
   }
 
   .support--content p {
