@@ -93,103 +93,130 @@ body {
   height: 100dvh !important; /* Dynamic viewport height for mobile */
 }
 
-/* About Section */
+/* About Section - Minimal Design */
 .about-section {
   min-height: 100vh;
-  padding: 80px 0;
-  background: var(--color-bg-secondary);
-  color: var(--color-text-primary);
+  background: #000;
+  color: #fff;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.about-container {
-  max-width: 1200px;
+.about-minimal-container {
+  max-width: 900px;
   margin: 0 auto;
   padding: 0 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  text-align: center;
 }
 
-.about-section h2 {
-  font-size: 4rem;
+.about-title {
+  font-size: clamp(3rem, 7vw, 5rem);
   font-weight: 900;
   font-family: "Nunito Sans", sans-serif;
-  margin-bottom: 3rem;
-  text-align: center;
+  line-height: 1.1;
+  margin-bottom: 2rem;
   letter-spacing: -2px;
 }
 
-.about-content {
+.title-highlight {
+  background: linear-gradient(90deg, #FF6B35 0%, #FF8C42 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.about-subtitle {
+  font-size: 1.5rem;
+  opacity: 0.7;
+  margin-bottom: 4rem;
+  font-weight: 300;
+}
+
+.growth-steps {
   display: flex;
-  gap: 4rem;
+  flex-direction: column;
+  gap: 3rem;
+  margin: 4rem 0;
+}
+
+.growth-step {
+  display: flex;
   align-items: center;
-  width: 100%;
-  max-width: 1000px;
-}
-
-.about-text {
-  flex: 1;
-}
-
-.about-text p {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  margin-bottom: 2rem;
-  opacity: 0.9;
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
-  margin-top: 3rem;
+  text-align: left;
 }
 
-.feature {
-  padding: 1.5rem;
-  background: var(--color-bg-primary);
-  border-radius: 12px;
-  transition: transform 0.3s ease;
+.step-number {
+  width: 80px;
+  height: 80px;
+  background: #FF6B35;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 900;
+  flex-shrink: 0;
 }
 
-.feature:hover {
-  transform: translateY(-5px);
-}
-
-.feature h3 {
-  font-size: 1.3rem;
-  font-weight: 700;
+.step-content h3 {
+  font-size: 1.8rem;
   margin-bottom: 0.5rem;
+  font-weight: 700;
 }
 
-.feature p {
-  font-size: 1rem;
-  opacity: 0.8;
+.step-content p {
+  font-size: 1.1rem;
+  opacity: 0.7;
   line-height: 1.5;
 }
 
-.scroll-to-top {
-  margin-top: 3rem;
-  padding: 1rem 2rem;
-  background: var(--color-button-primary);
-  color: var(--color-button-text);
-  border: none;
-  border-radius: 50px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.3s ease;
+.revenue-visual {
+  margin-top: 5rem;
+  position: relative;
+  height: 100px;
 }
 
-.scroll-to-top:hover {
-  background: var(--color-button-hover);
-  transform: translateY(-2px);
+.revenue-line {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 2px;
+  background: #FF6B35;
+  overflow: hidden;
+}
+
+.revenue-line::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #fff, transparent);
+  animation: revenue-flow 2s linear infinite;
+}
+
+@keyframes revenue-flow {
+  to {
+    left: 100%;
+  }
+}
+
+.revenue-label {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+  opacity: 0.5;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 /* Scroll Indicator */
@@ -560,6 +587,52 @@ button:hover {
     padding: 10px 20px;
     font-size: 0.8rem;
     gap: 10px;
+  }
+
+  /* About Section Mobile */
+  .about-minimal-container {
+    padding: 0 20px;
+  }
+
+  .about-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+  }
+
+  .growth-steps {
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+
+  .growth-step {
+    gap: 1.5rem;
+  }
+
+  .step-number {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+
+  .step-content h3 {
+    font-size: 1.4rem;
+  }
+
+  .step-content p {
+    font-size: 1rem;
+  }
+
+  .revenue-visual {
+    margin-top: 3rem;
+  }
+
+  .revenue-line {
+    width: 200px;
   }
 }
 
