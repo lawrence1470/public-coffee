@@ -6,18 +6,31 @@ import { easing } from "maath";
 import { useSnapshot } from "valtio";
 import { state } from "../store";
 
-export function Mug(props: any) {
+interface MugProps {
+  scale?: number;
+  position?: [number, number, number];
+  dispose?: null;
+}
+
+export function Mug(props: MugProps) {
   const snap = useSnapshot(state);
   const texture = useTexture(`/${snap.decal}.png`);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { nodes, materials } = useGLTF("/mug.glb") as any;
 
-  // Animate color changes
+  // Set all materials to white
   useFrame((_, delta) => {
     if (materials && materials["01___Default"]) {
-      easing.dampC(materials["01___Default"].color, snap.color, 0.25, delta);
+      easing.dampC(materials["01___Default"].color, "#ffffff", 0.25, delta);
     }
     if (materials && materials["01___Default-2"]) {
-      easing.dampC(materials["01___Default-2"].color, snap.color, 0.25, delta);
+      easing.dampC(materials["01___Default-2"].color, "#ffffff", 0.25, delta);
+    }
+    if (materials && materials["02___Default"]) {
+      easing.dampC(materials["02___Default"].color, "#ffffff", 0.25, delta);
+    }
+    if (materials && materials["02___Default-2"]) {
+      easing.dampC(materials["02___Default-2"].color, "#ffffff", 0.25, delta);
     }
   });
 

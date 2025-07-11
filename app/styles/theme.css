@@ -1,22 +1,22 @@
-/* Black & White Theme System */
+/* Orange Accent Theme System */
 :root {
   /* Primary Colors */
   --color-primary: #000000;
   --color-secondary: #ffffff;
 
-  /* Background Colors */
-  --color-bg-primary: #ffffff;
-  --color-bg-secondary: #f8f8f8;
-  --color-bg-tertiary: #e5e5e5;
-  --color-bg-dark: #000000;
-  --color-bg-overlay: rgba(0, 0, 0, 0.1);
+  /* Background Colors - Orange Accent */
+  --color-bg-primary: #ff6b35;
+  --color-bg-secondary: #ff8c42;
+  --color-bg-tertiary: #ffb380;
+  --color-bg-dark: #e55a2b;
+  --color-bg-overlay: rgba(255, 107, 53, 0.1);
 
   /* Text Colors */
-  --color-text-primary: #000000;
-  --color-text-secondary: #333333;
-  --color-text-tertiary: #666666;
-  --color-text-inverse: #ffffff;
-  --color-text-muted: #999999;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #f5f5f5;
+  --color-text-tertiary: #e5e5e5;
+  --color-text-inverse: #000000;
+  --color-text-muted: #cccccc;
 
   /* Interactive Colors */
   --color-button-primary: #000000;
@@ -26,43 +26,43 @@
   --color-button-text-inverse: #000000;
 
   /* Border Colors */
-  --color-border-primary: #000000;
-  --color-border-secondary: #e5e5e5;
-  --color-border-tertiary: #cccccc;
+  --color-border-primary: #ffffff;
+  --color-border-secondary: #ffb380;
+  --color-border-tertiary: #ff8c42;
 
   /* Shadow Colors */
   --color-shadow-light: rgba(0, 0, 0, 0.1);
   --color-shadow-medium: rgba(0, 0, 0, 0.2);
   --color-shadow-heavy: rgba(0, 0, 0, 0.3);
 
-  /* Accent Colors (keeping minimal for B&W theme) */
-  --color-accent-primary: #000000;
-  --color-accent-secondary: #ffffff;
+  /* Accent Colors */
+  --color-accent-primary: #ff6b35;
+  --color-accent-secondary: #ff8c42;
 
   /* 3D Scene Colors */
-  --color-scene-bg: #f0f0f0;
+  --color-scene-bg: #ff6b35;
   --color-mug-primary: #ffffff;
   --color-mug-secondary: #000000;
-  --color-backdrop: #e5e5e5;
+  --color-backdrop: #ff8c42;
 }
 
-/* Dark mode support (inverted B&W) */
+/* Dark mode support (darker orange variations) */
 @media (prefers-color-scheme: dark) {
   :root {
     --color-primary: #ffffff;
     --color-secondary: #000000;
 
-    --color-bg-primary: #000000;
-    --color-bg-secondary: #111111;
-    --color-bg-tertiary: #222222;
-    --color-bg-dark: #ffffff;
-    --color-bg-overlay: rgba(255, 255, 255, 0.1);
+    --color-bg-primary: #e55a2b;
+    --color-bg-secondary: #cc4a1f;
+    --color-bg-tertiary: #b33a13;
+    --color-bg-dark: #991f00;
+    --color-bg-overlay: rgba(229, 90, 43, 0.1);
 
     --color-text-primary: #ffffff;
-    --color-text-secondary: #e5e5e5;
-    --color-text-tertiary: #cccccc;
+    --color-text-secondary: #f5f5f5;
+    --color-text-tertiary: #e5e5e5;
     --color-text-inverse: #000000;
-    --color-text-muted: #999999;
+    --color-text-muted: #cccccc;
 
     --color-button-primary: #ffffff;
     --color-button-secondary: #000000;
@@ -71,20 +71,20 @@
     --color-button-text-inverse: #ffffff;
 
     --color-border-primary: #ffffff;
-    --color-border-secondary: #333333;
-    --color-border-tertiary: #555555;
+    --color-border-secondary: #ff8c42;
+    --color-border-tertiary: #ffb380;
 
     --color-shadow-light: rgba(255, 255, 255, 0.1);
     --color-shadow-medium: rgba(255, 255, 255, 0.2);
     --color-shadow-heavy: rgba(255, 255, 255, 0.3);
 
-    --color-accent-primary: #ffffff;
-    --color-accent-secondary: #000000;
+    --color-accent-primary: #ff6b35;
+    --color-accent-secondary: #ff8c42;
 
-    --color-scene-bg: #1a1a1a;
+    --color-scene-bg: #e55a2b;
     --color-mug-primary: #000000;
     --color-mug-secondary: #ffffff;
-    --color-backdrop: #333333;
+    --color-backdrop: #cc4a1f;
   }
 }
 

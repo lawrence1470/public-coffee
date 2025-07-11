@@ -73,15 +73,25 @@ export function Overlay() {
                 mug showcase. <strong>Discover the perfect blend</strong> for
                 your taste.
               </p>
-              <button
-                className="button-primary"
+              <motion.button
+                key="button"
+                initial={{ x: 100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{
+                  type: "spring",
+                  damping: 5,
+                  stiffness: 40,
+                  restDelta: 0.001,
+                  duration: 0.3,
+                }}
                 onClick={() => {
-                  // Add your action here
-                  console.log("Button clicked!");
+                  // Handle button click
+                  console.log("Explore collection clicked");
                 }}
               >
-                EXPLORE COLLECTION <AiOutlineArrowRight size="1.3em" />
-              </button>
+                EXPLORE COLLECTION
+                <AiOutlineArrowRight size="1.2em" />
+              </motion.button>
             </motion.div>
           </div>
         </div>
