@@ -21,12 +21,8 @@ export function ScrollContainer({ children }: ScrollContainerProps) {
     const sections = Array.from(wrapper.children) as HTMLElement[]
     sectionsRef.current = sections
 
-    // Set up GSAP timeline
-    const tl = gsap.timeline()
-    
     // Calculate bounds
     const sectionHeight = window.innerHeight
-    const maxScroll = -(sections.length - 1) * sectionHeight
 
     let startY = 0
     let currentY = 0

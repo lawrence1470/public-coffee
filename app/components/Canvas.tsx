@@ -42,12 +42,18 @@ function Backdrop() {
   const snap = useSnapshot(state);
   useFrame((_, delta) => {
     if (shadows.current) {
-      easing.dampC(
-        (shadows.current as any).getMesh().material.color,
-        snap.color,
-        0.25,
-        delta
-      );
+      const shadowMesh = shadows.current as THREE.Group & { 
+        getMesh: () => THREE.Mesh<THREE.BufferGeometry, THREE.MeshBasicMaterial> 
+      };
+      const material = shadowMesh.getMesh().material;
+      if ('color' in material) {
+        easing.dampC(
+          material.color,
+          snap.color,
+          0.25,
+          delta
+        );
+      }
     }
   });
   return (
