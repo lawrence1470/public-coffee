@@ -25,11 +25,9 @@ export function ScrollContainer({ children }: ScrollContainerProps) {
     let currentY = 0
     let startTime = 0
     let isDragging = false
-    let isScrolling = false
     
     // Touch/Mouse drag handling
     const handleStart = (e: TouchEvent | MouseEvent) => {
-      if (isScrolling) return
       
       isDragging = true
       startTime = Date.now()
@@ -43,7 +41,7 @@ export function ScrollContainer({ children }: ScrollContainerProps) {
     }
     
     const handleMove = (e: TouchEvent | MouseEvent) => {
-      if (!isDragging || isScrolling) return
+      if (!isDragging) return
       e.preventDefault()
       e.stopPropagation()
       
@@ -59,7 +57,7 @@ export function ScrollContainer({ children }: ScrollContainerProps) {
     }
     
     const handleEnd = (e: TouchEvent | MouseEvent) => {
-      if (!isDragging || isScrolling) return
+      if (!isDragging) return
       isDragging = false
       
       if (wrapper) {
@@ -192,7 +190,6 @@ export function ScrollContainer({ children }: ScrollContainerProps) {
     // Prevent interaction during animation
     const container = containerRef.current
     const wrapper = wrapperRef.current
-    const isScrollingRef = { current: true }
     
     container.style.pointerEvents = 'none'
     
@@ -206,7 +203,6 @@ export function ScrollContainer({ children }: ScrollContainerProps) {
       onComplete: () => {
         setCurrentSection(index)
         container.style.pointerEvents = 'auto'
-        isScrollingRef.current = false
       }
     })
   }
