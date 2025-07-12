@@ -11,6 +11,11 @@
   padding-top: var(--gap);
   position: fixed;
   inset: 0% 0% auto;
+  pointer-events: none;
+}
+
+.header > * {
+  pointer-events: auto;
 }
 
 .container {
@@ -85,6 +90,7 @@
 }
 
 .iconWrap {
+  display: flex;
   transition: transform .4s cubic-bezier(.65, .05, 0, 1);
 }
 
@@ -114,6 +120,7 @@
   display: block;
   position: fixed;
   inset: 0%;
+  pointer-events: auto;
 }
 
 .overlay {
@@ -139,6 +146,7 @@
   margin-left: auto;
   position: relative;
   overflow: auto;
+  z-index: 2;
 }
 
 .menuBg {
@@ -165,7 +173,7 @@
 }
 
 .menuInner {
-  z-index: 1;
+  z-index: 10;
   grid-column-gap: 5em;
   grid-row-gap: 5em;
   flex-flow: column;
@@ -175,6 +183,7 @@
   display: flex;
   position: relative;
   overflow: auto;
+  pointer-events: auto;
 }
 
 .menuList {
@@ -200,6 +209,8 @@
   width: 100%;
   text-decoration: none;
   display: flex;
+  position: relative;
+  overflow: hidden;
   cursor: url("https://cdn.prod.website-files.com/6708f85ff3d3cba6aff436fb/671251b212e6b71494aa67ff_cursor-pointer%402x.svg") 12 0, pointer;
 }
 
@@ -224,6 +235,7 @@
   font-weight: 400;
   margin: 0;
   position: relative;
+  transition: color .3s ease;
 }
 
 .menuLinkBg {
@@ -233,7 +245,10 @@
   transform-style: preserve-3d;
   transition: transform .55s cubic-bezier(.65, .05, 0, 1);
   position: absolute;
-  inset: 0%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   transform: scale3d(1, 0, 1);
 }
 
@@ -269,10 +284,15 @@
   .menuLink:hover .menuLinkHeading {
     transform: translate(0px, -1em);
     transition-delay: 0.1s;
+    color: var(--color-neutral-100);
   }
 
   .menuLink:hover .menuLinkBg {
-    transform: scale(1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  
+  .menuLink:hover .eyebrow {
+    color: var(--color-neutral-100);
   }
 
   .textLink::after {

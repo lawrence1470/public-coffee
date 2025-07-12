@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Link from 'next/link';
 import gsap from 'gsap';
 import styles from './Navigation.module.css';
 
@@ -60,6 +61,15 @@ export default function Navigation() {
           closeNav();
         } else {
           openNav();
+        }
+      });
+    });
+
+    // Close menu when clicking a link
+    menuLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        if (navWrap.getAttribute('data-nav') === 'open') {
+          closeNav();
         }
       });
     });
@@ -133,39 +143,39 @@ export default function Navigation() {
           <div className={styles.menuInner}>
             <ul className={styles.menuList}>
               <li className={styles.menuListItem}>
-                <a href="#" className={styles.menuLink}>
+                <Link href="/about-us" className={styles.menuLink}>
                   <p className={styles.menuLinkHeading}>About us</p>
                   <p className={styles.eyebrow}>01</p>
                   <div className={styles.menuLinkBg}></div>
-                </a>
+                </Link>
               </li>
               <li className={styles.menuListItem}>
-                <a href="#" className={styles.menuLink}>
+                <Link href="/our-work" className={styles.menuLink}>
                   <p className={styles.menuLinkHeading}>Our work</p>
                   <p className={styles.eyebrow}>02</p>
                   <div className={styles.menuLinkBg}></div>
-                </a>
+                </Link>
               </li>
               <li className={styles.menuListItem}>
-                <a href="#" className={styles.menuLink}>
+                <Link href="/services" className={styles.menuLink}>
                   <p className={styles.menuLinkHeading}>Services</p>
                   <p className={styles.eyebrow}>03</p>
                   <div className={styles.menuLinkBg}></div>
-                </a>
+                </Link>
               </li>
               <li className={styles.menuListItem}>
-                <a href="#" className={styles.menuLink}>
+                <Link href="/blog" className={styles.menuLink}>
                   <p className={styles.menuLinkHeading}>Blog</p>
                   <p className={styles.eyebrow}>04</p>
                   <div className={styles.menuLinkBg}></div>
-                </a>
+                </Link>
               </li>
               <li className={styles.menuListItem}>
-                <a href="#" className={styles.menuLink}>
+                <Link href="/contact-us" className={styles.menuLink}>
                   <p className={styles.menuLinkHeading}>Contact us</p>
                   <p className={styles.eyebrow}>05</p>
                   <div className={styles.menuLinkBg}></div>
-                </a>
+                </Link>
               </li>
             </ul>
             <div className={styles.menuDetails}>
