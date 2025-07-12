@@ -1,0 +1,172 @@
+@import url("https://fonts.cdnfonts.com/css/pp-neue-montreal");
+
+.pageContainer {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Background image */
+.backgroundImage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("https://assets.codepen.io/7558/bw-spheres-001.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  opacity: 0.9;
+}
+
+/* Quote section */
+.quoteSection {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 5;
+  color: white;
+  max-width: 640px;
+}
+
+.quoteSection h2 {
+  font-size: 3rem;
+  line-height: 1.1;
+  font-weight: 400;
+  font-family: "PP Neue Montreal", Arial, sans-serif;
+}
+
+.titleLine {
+  display: block;
+  overflow: hidden;
+  margin-bottom: 0.1em;
+}
+
+.titleLine span {
+  display: inline-block;
+  transform: translateY(100%);
+}
+
+/* Main content */
+.mainContent {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 2rem 4rem;
+  pointer-events: auto;
+}
+
+.contentWrapper {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.pageTitle {
+  font-size: 5rem;
+  font-weight: 400;
+  margin-bottom: 3rem;
+  color: white;
+  font-family: "PP Neue Montreal", Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.contentColumn {
+  color: white;
+}
+
+.leadText {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+  font-weight: 400;
+  font-family: "PP Neue Montreal", Arial, sans-serif;
+}
+
+.bodyText {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+  font-family: "PP Neue Montreal", Arial, sans-serif;
+  opacity: 0.9;
+}
+
+/* Scroll indicator */
+.scrollText {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 5;
+  color: white;
+  font-size: 1rem;
+  font-family: "PP Neue Montreal", Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .quoteSection {
+    max-width: 300px;
+    left: 1rem;
+    bottom: 1rem;
+  }
+
+  .quoteSection h2 {
+    font-size: 2rem;
+  }
+
+  .pageTitle {
+    font-size: 3rem;
+  }
+
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .mainContent {
+    padding: 6rem 1rem 3rem;
+  }
+
+  .leadText {
+    font-size: 1.25rem;
+  }
+
+  .bodyText {
+    font-size: 1rem;
+  }
+
+  .scrollText {
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .quoteSection h2 {
+    font-size: 1.5rem;
+  }
+
+  .pageTitle {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+}
