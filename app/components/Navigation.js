@@ -99,17 +99,14 @@ export default function Navigation() {
       <header className={styles.header}>
         <div className={`${styles.container} ${styles.isFull}`}>
           <nav className={styles.navRow}>
-            <a href="https://osmo.supply/" aria-label="home" target="_blank" className={styles.navLogoRow}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 66 20" fill="none" className={styles.navLogoWordmark}>
-                <path d="M9.67499 19.3499C4.32499 19.3499 0.899994 15.4249 0.899994 10.0499C0.899994 4.6749 4.32499 0.774902 9.67499 0.774902C15.025 0.774902 18.45 4.6749 18.45 10.0499C18.45 15.4249 15.025 19.3499 9.67499 19.3499ZM3.77499 10.0499C3.77499 13.7249 5.44999 16.9749 9.67499 16.9749C13.9 16.9749 15.575 13.7249 15.575 10.0499C15.575 6.3749 13.9 3.1499 9.67499 3.1499C5.44999 3.1499 3.77499 6.3749 3.77499 10.0499Z" fill="currentColor"></path>
-                <path d="M25.7115 19.3499C21.8365 19.3499 19.9115 17.3499 19.8365 14.7499H22.3115C22.4115 16.2249 23.3115 17.3749 25.6865 17.3749C27.8365 17.3749 28.4115 16.4249 28.4115 15.4999C28.4115 13.8999 26.7115 13.7249 25.0615 13.3749C22.8365 12.8499 20.2865 12.1999 20.2865 9.5499C20.2865 7.3499 22.0615 5.8749 25.1365 5.8749C28.6365 5.8749 30.3115 7.7499 30.4865 9.9499H28.0115C27.8365 8.9749 27.3115 7.8499 25.1865 7.8499C23.5365 7.8499 22.8365 8.4999 22.8365 9.4499C22.8365 10.7749 24.2615 10.8999 26.0615 11.2999C28.4115 11.8499 30.9615 12.5249 30.9615 15.3749C30.9615 17.8499 29.0615 19.3499 25.7115 19.3499Z" fill="currentColor"></path>
-                <path d="M40.5435 10.8249C40.5435 9.1249 40.1935 7.9749 38.3186 7.9749C36.4936 7.9749 35.3435 9.2499 35.3435 11.1749V18.9999H32.8935V6.2499H35.3435V7.8499H35.3935C36.0685 6.8749 37.2435 5.8749 39.1685 5.8749C40.9435 5.8749 42.0435 6.6749 42.5435 8.0999H42.5935C43.5185 6.8749 44.8185 5.8749 46.7685 5.8749C49.3435 5.8749 50.6436 7.4249 50.6436 10.1499V18.9999H48.1936V10.8249C48.1936 9.1249 47.8435 7.9749 45.9685 7.9749C44.1435 7.9749 42.9935 9.2499 42.9935 11.1749V18.9999H40.5435V10.8249Z" fill="currentColor"></path>
-                <path d="M59.0281 19.3749C55.0531 19.3749 52.6531 16.6249 52.6531 12.6249C52.6531 8.6499 55.0531 5.8499 59.0531 5.8499C63.0031 5.8499 65.4031 8.6249 65.4031 12.5999C65.4031 16.5999 63.0031 19.3749 59.0281 19.3749ZM55.2031 12.6249C55.2031 15.2749 56.4031 17.3499 59.0531 17.3499C61.6531 17.3499 62.8531 15.2749 62.8531 12.6249C62.8531 9.9499 61.6531 7.8999 59.0531 7.8999C56.4031 7.8999 55.2031 9.9499 55.2031 12.6249Z" fill="currentColor"></path>
+            <Link href="/" aria-label="home" className={styles.navLogoRow}>
+              <span className={styles.navLogoWordmark}>CoffeeBird</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none" className={styles.navLogoIcon}>
+                <path d="M2 12C2 6.48 6.48 2 12 2C17.52 2 22 6.48 22 12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12ZM12 20C16.42 20 20 16.42 20 12C20 7.58 16.42 4 12 4C7.58 4 4 7.58 4 12C4 16.42 7.58 20 12 20Z" fill="currentColor"/>
+                <path d="M12 6C12.55 6 13 6.45 13 7V11.17L15.59 13.76C15.98 14.15 15.98 14.78 15.59 15.17C15.2 15.56 14.57 15.56 14.18 15.17L11.3 12.29C11.11 12.1 11 11.85 11 11.59V7C11 6.45 11.45 6 12 6Z" fill="currentColor"/>
+                <path d="M17 14H18C18.55 14 19 13.55 19 13V10C19 9.45 18.55 9 18 9H17V14Z" fill="currentColor"/>
               </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 160 160" fill="none" className={styles.navLogoIcon}>
-                <path d="M94.8284 53.8578C92.3086 56.3776 88 54.593 88 51.0294V0H72V59.9999C72 66.6273 66.6274 71.9999 60 71.9999H0V87.9999H51.0294C54.5931 87.9999 56.3777 92.3085 53.8579 94.8283L18.3431 130.343L29.6569 141.657L65.1717 106.142C67.684 103.63 71.9745 105.396 72 108.939V160L88.0001 160L88 99.9999C88 93.3725 93.3726 87.9999 100 87.9999H160V71.9999H108.939C105.407 71.9745 103.64 67.7091 106.12 65.1938L106.142 65.1716L141.657 29.6568L130.343 18.3432L94.8284 53.8578Z" fill="currentColor"></path>
-              </svg>
-            </a>
+            </Link>
             <div className={styles.navRowRight}>
               <button role="button" data-menu-toggle="" className={styles.menuButton}>
                 <div className={styles.menuButtonText}>
@@ -144,35 +141,35 @@ export default function Navigation() {
             <ul className={styles.menuList}>
               <li className={styles.menuListItem}>
                 <Link href="/about-us" className={styles.menuLink}>
-                  <p className={styles.menuLinkHeading}>About us</p>
+                  <p className={styles.menuLinkHeading}>Our Story</p>
                   <p className={styles.eyebrow}>01</p>
                   <div className={styles.menuLinkBg}></div>
                 </Link>
               </li>
               <li className={styles.menuListItem}>
-                <Link href="/our-work" className={styles.menuLink}>
-                  <p className={styles.menuLinkHeading}>Our work</p>
+                <Link href="/roasters" className={styles.menuLink}>
+                  <p className={styles.menuLinkHeading}>Roasters</p>
                   <p className={styles.eyebrow}>02</p>
                   <div className={styles.menuLinkBg}></div>
                 </Link>
               </li>
               <li className={styles.menuListItem}>
-                <Link href="/services" className={styles.menuLink}>
-                  <p className={styles.menuLinkHeading}>Services</p>
+                <Link href="/experiences" className={styles.menuLink}>
+                  <p className={styles.menuLinkHeading}>Experiences</p>
                   <p className={styles.eyebrow}>03</p>
                   <div className={styles.menuLinkBg}></div>
                 </Link>
               </li>
               <li className={styles.menuListItem}>
-                <Link href="/blog" className={styles.menuLink}>
-                  <p className={styles.menuLinkHeading}>Blog</p>
+                <Link href="/journal" className={styles.menuLink}>
+                  <p className={styles.menuLinkHeading}>Journal</p>
                   <p className={styles.eyebrow}>04</p>
                   <div className={styles.menuLinkBg}></div>
                 </Link>
               </li>
               <li className={styles.menuListItem}>
-                <Link href="/contact-us" className={styles.menuLink}>
-                  <p className={styles.menuLinkHeading}>Contact us</p>
+                <Link href="/membership" className={styles.menuLink}>
+                  <p className={styles.menuLinkHeading}>Membership</p>
                   <p className={styles.eyebrow}>05</p>
                   <div className={styles.menuLinkBg}></div>
                 </Link>

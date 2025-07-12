@@ -7,11 +7,13 @@
 }
 
 .header {
-  z-index: 110;
+  z-index: 1100;
   padding-top: var(--gap);
   position: fixed;
   inset: 0% 0% auto;
   pointer-events: none;
+  background: linear-gradient(to bottom, rgba(245, 245, 245, 0.9) 0%, rgba(245, 245, 245, 0) 100%);
+  padding-bottom: 2rem;
 }
 
 .header > * {
@@ -49,7 +51,10 @@
 }
 
 .navLogoWordmark {
-  width: 4em;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: PP Neue Corp Tight, Arial, sans-serif;
+  letter-spacing: -0.02em;
 }
 
 .navLogoIcon {
@@ -112,7 +117,7 @@
 }
 
 .nav {
-  z-index: 100;
+  z-index: 1200;
   width: 100%;
   height: 100vh;
   margin-left: auto;
@@ -146,7 +151,8 @@
   margin-left: auto;
   position: relative;
   overflow: auto;
-  z-index: 2;
+  z-index: 1201;
+  display: flex;
 }
 
 .menuBg {
