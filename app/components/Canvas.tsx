@@ -38,22 +38,17 @@ export const CanvasComponent = ({
 );
 
 function Backdrop() {
-  const shadows = useRef<THREE.Group>(null!);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const shadows = useRef<any>(null);
   const snap = useSnapshot(state);
   useFrame((_, delta) => {
     if (shadows.current) {
-      const shadowMesh = shadows.current as THREE.Group & { 
-        getMesh: () => THREE.Mesh<THREE.BufferGeometry, THREE.MeshBasicMaterial> 
-      };
-      const material = shadowMesh.getMesh().material;
-      if ('color' in material) {
-        easing.dampC(
-          material.color,
-          snap.color,
-          0.25,
-          delta
-        );
-      }
+      easing.dampC(
+        shadows.current.getMesh().material.color,
+        snap.color,
+        0.25,
+        delta
+      );
     }
   });
   return (

@@ -21,9 +21,6 @@ export function ScrollContainer({ children }: ScrollContainerProps) {
     const sections = Array.from(wrapper.children) as HTMLElement[]
     sectionsRef.current = sections
 
-    // Calculate bounds
-    const sectionHeight = window.innerHeight
-
     let startY = 0
     let currentY = 0
     let startTime = 0
