@@ -71,6 +71,7 @@
   padding: 1em;
   display: flex;
   border: none;
+  color: var(--color-dark);
   cursor: url("https://cdn.prod.website-files.com/6708f85ff3d3cba6aff436fb/671251b212e6b71494aa67ff_cursor-pointer%402x.svg") 12 0, pointer;
 }
 
