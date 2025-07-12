@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Coffee Bird - Premium Coffee Collection",
+  title: "Coffeebird - Premium Coffee Collection",
   description:
     "Experience our premium coffee collection with stunning 3D mug showcase",
   viewport:

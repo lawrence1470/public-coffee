@@ -16,7 +16,7 @@ export default function Home() {
       {/* About Section */}
       <AboutSection />
 
-      {/* Benefits Section */}
+      {/* Benefits Section with Footer */}
       <BenefitsSection />
     </ScrollContainer>
   );

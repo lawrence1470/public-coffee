@@ -143,7 +143,7 @@ export function Overlay() {
           alignItems: "center",
           justifyContent: "center",
           cursor: "pointer",
-          color: "var(--color-text-primary)",
+          color: "#000",
           textAlign: "center",
           width: "200px",
           marginLeft: "-100px",

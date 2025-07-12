@@ -237,6 +237,7 @@ header {
   align-items: center;
   position: fixed;
   z-index: 100;
+  color: #000;
 }
 
 header p {
@@ -280,6 +281,7 @@ section {
   width: 30%;
   line-height: 10rem;
   font-family: "Nunito Sans", sans-serif;
+  color: #000;
 }
 
 .support--content {
@@ -292,6 +294,7 @@ section {
   width: 350px;
   margin-bottom: 48px;
   line-height: 1.5rem;
+  color: #000;
 }
 
 .bg {
@@ -646,6 +649,8 @@ button:hover {
   overflow: hidden;
   touch-action: none;
   cursor: grab;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
 }
 
 .gsap-scroll-container:active {
@@ -657,6 +662,9 @@ button:hover {
   position: relative;
   will-change: transform;
   user-select: none;
+  -webkit-user-select: none;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .gsap-section {
@@ -665,6 +673,16 @@ button:hover {
   position: relative;
   overflow: hidden;
   user-select: none;
+  -webkit-user-select: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Improve mobile performance */
+@media (max-width: 768px) {
+  .gsap-scroll-wrapper {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
 }
 
 /* Section Navigation Dots */
@@ -676,7 +694,7 @@ button:hover {
   z-index: 1000;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 12px;
 }
 
 .nav-dot {
@@ -719,60 +737,65 @@ button:hover {
   background: #ffffff;
   height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   overflow: hidden;
+  position: relative;
+  padding-top: 60px;
 }
 
 .benefits-container {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 40px;
-  height: 100%;
+  padding: 20px 40px;
+  width: 100%;
+  height: calc(100vh - 120px);
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .benefits-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .benefits-header h2 {
   font-family: "Nunito Sans", sans-serif;
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 900;
   color: #1a1a1a;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   letter-spacing: -1px;
 }
 
 .benefits-header p {
-  font-size: 1.125rem;
+  font-size: 1rem;
   color: #666;
   font-weight: 400;
 }
 
 .benefits-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
   width: 100%;
+  margin-bottom: 40px;
+  flex-grow: 1;
 }
 
 .benefit-card {
   background: #f8f8f8;
   border-radius: 12px;
-  padding: 25px 20px;
+  padding: 20px 15px;
   text-align: center;
   transition: all 0.3s ease;
   border: 1px solid #e5e5e5;
   cursor: pointer;
   user-select: none;
-  min-height: 280px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-height: 200px;
 }
 
 .benefit-card:hover {
@@ -822,8 +845,8 @@ button:hover {
 }
 
 @media screen and (max-width: 1200px) {
-  .benefits-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .benefits-container {
+    padding: 30px;
   }
 }
 
@@ -879,3 +902,55 @@ button:hover {
     min-height: auto;
   }
 }
+
+/* Benefits Footer */
+.benefits-footer {
+  text-align: center;
+  padding: 30px 20px 20px;
+  margin-top: auto;
+  border-top: 1px solid #e5e5e5;
+}
+
+.benefits-footer .footer-text {
+  font-size: 0.9rem;
+  opacity: 0.6;
+  margin-bottom: 1rem;
+  font-weight: 300;
+  color: #000;
+}
+
+.benefits-footer .footer-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.benefits-footer .footer-link {
+  font-size: 0.85rem;
+  color: #000;
+  opacity: 0.6;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.benefits-footer .footer-link:hover {
+  opacity: 1;
+}
+
+.benefits-footer .footer-divider {
+  opacity: 0.3;
+  font-size: 0.8rem;
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .benefits-footer .footer-text {
+    font-size: 0.8rem;
+  }
+  
+  .benefits-footer .footer-link {
+    font-size: 0.75rem;
+  }
+}
+

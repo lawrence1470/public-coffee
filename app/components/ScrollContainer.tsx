@@ -25,25 +25,46 @@ export function ScrollContainer({ children }: ScrollContainerProps) {
     let currentY = 0
     let startTime = 0
     let isDragging = false
+    let isScrolling = false
     
     // Touch/Mouse drag handling
     const handleStart = (e: TouchEvent | MouseEvent) => {
+      if (isScrolling) return
+      
       isDragging = true
       startTime = Date.now()
       startY = 'touches' in e ? e.touches[0].clientY : e.clientY
       currentY = startY
+      
+      // Add a visual indicator that we're tracking
+      if (wrapper) {
+        wrapper.style.cursor = 'grabbing'
+      }
     }
     
     const handleMove = (e: TouchEvent | MouseEvent) => {
-      if (!isDragging) return
+      if (!isDragging || isScrolling) return
       e.preventDefault()
+      e.stopPropagation()
       
       currentY = 'touches' in e ? e.touches[0].clientY : e.clientY
+      const diff = (startY - currentY) * 0.3 // Add some resistance
+      
+      // Show visual feedback during drag
+      const currentTransform = -currentSection * window.innerHeight
+      gsap.set(wrapper, {
+        y: currentTransform - diff,
+        duration: 0
+      })
     }
     
     const handleEnd = (e: TouchEvent | MouseEvent) => {
-      if (!isDragging) return
+      if (!isDragging || isScrolling) return
       isDragging = false
+      
+      if (wrapper) {
+        wrapper.style.cursor = 'grab'
+      }
       
       const endY = 'touches' in e ? 
         (e as TouchEvent).changedTouches[0]?.clientY || currentY : 
@@ -53,9 +74,9 @@ export function ScrollContainer({ children }: ScrollContainerProps) {
       const time = Date.now() - startTime
       const velocity = Math.abs(diff) / time
       
-      // Lower threshold for better responsiveness
-      const threshold = 30
-      const velocityThreshold = 0.3
+      // Adjusted thresholds for better mobile experience
+      const threshold = window.innerWidth < 768 ? 50 : 30
+      const velocityThreshold = 0.5
       
       if (Math.abs(diff) > threshold || velocity > velocityThreshold) {
         if (diff > 0 && currentSection < sections.length - 1) {
@@ -114,12 +135,40 @@ export function ScrollContainer({ children }: ScrollContainerProps) {
       e.preventDefault()
     }
 
+    // Add a more robust touch handling for mobile
+    let touchStartY = 0
+    
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartY = e.touches[0].clientY
+    }
+    
+    const handleTouchEnd = (e: TouchEvent) => {
+      const touchEndY = e.changedTouches[0].clientY
+      const diff = touchStartY - touchEndY
+      
+      // Simple swipe detection
+      if (Math.abs(diff) > 50) {
+        if (diff > 0 && currentSection < sections.length - 1) {
+          navigateToSection(currentSection + 1)
+        } else if (diff < 0 && currentSection > 0) {
+          navigateToSection(currentSection - 1)
+        }
+      }
+    }
+
+    // Mobile-specific event listeners
+    if ('ontouchstart' in window) {
+      container.addEventListener('touchstart', handleTouchStart, { passive: true })
+      container.addEventListener('touchend', handleTouchEnd, { passive: true })
+    }
+
     container.addEventListener('wheel', preventScroll, { passive: false })
     container.addEventListener('touchmove', preventScroll, { passive: false })
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
       container.removeEventListener('wheel', preventScroll)
+      container.removeEventListener('touchmove', preventScroll)
       
       container.removeEventListener('mousedown', handleStart)
       container.removeEventListener('mousemove', handleMove)
@@ -129,21 +178,35 @@ export function ScrollContainer({ children }: ScrollContainerProps) {
       container.removeEventListener('touchstart', handleStart)
       container.removeEventListener('touchmove', handleMove)
       container.removeEventListener('touchend', handleEnd)
+      
+      if ('ontouchstart' in window) {
+        container.removeEventListener('touchstart', handleTouchStart)
+        container.removeEventListener('touchend', handleTouchEnd)
+      }
     }
   }, [currentSection, children.length])
 
   const navigateToSection = (index: number) => {
-    if (!wrapperRef.current) return
+    if (!wrapperRef.current || !containerRef.current) return
+    
+    // Prevent interaction during animation
+    const container = containerRef.current
+    const wrapper = wrapperRef.current
+    const isScrollingRef = { current: true }
+    
+    container.style.pointerEvents = 'none'
     
     const sectionHeight = window.innerHeight
     const targetY = -index * sectionHeight
     
-    gsap.to(wrapperRef.current, {
+    gsap.to(wrapper, {
       y: targetY,
-      duration: 0.6,
+      duration: 0.5,
       ease: 'power2.inOut',
       onComplete: () => {
         setCurrentSection(index)
+        container.style.pointerEvents = 'auto'
+        isScrollingRef.current = false
       }
     })
   }

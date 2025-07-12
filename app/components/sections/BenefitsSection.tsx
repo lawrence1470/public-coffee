@@ -121,6 +121,18 @@ export function BenefitsSection() {
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Footer content */}
+        <div className="benefits-footer">
+          <p className="footer-text">
+            © 2024 Coffee Bird. All rights reserved.
+          </p>
+          <div className="footer-links">
+            <a href="#" className="footer-link">Terms</a>
+            <span className="footer-divider">·</span>
+            <a href="#" className="footer-link">Privacy</a>
+          </div>
+        </div>
       </div>
     </section>
   )
