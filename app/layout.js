@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "CoffeeBird - Luxury Coffee Community",
   description: "An exclusive community for passionate coffee connoisseurs",
+  icons: {
+    icon: "/coffeebird-black-logo.svg",
+  },
 };
 
 export default function RootLayout({ children }) {
